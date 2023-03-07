@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: 'detail-profil/:id',   component: DetailProfilComponent },
   { path: 'login',   component: LoginComponent },
   { path: 'dashboard',   component: DashboardComponent },
-  {path: 'POS/', component: DashboardComponent},
 
 ];
 

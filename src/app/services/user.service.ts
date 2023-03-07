@@ -13,11 +13,5 @@ export class UserService {
     return this.http.get<Utilisateur[]>(this.host+"searchPageUsers?Keyword="+Keyword+"&page="+page+"&size="+size);
   }
 
-  login(username: string, password: string) :Observable<Utilisateur> {
-      const body = {
-        username: username,
-        password: password
-      };
-    return this.http.post<Utilisateur>(this.host, body);
-  }
+
 }

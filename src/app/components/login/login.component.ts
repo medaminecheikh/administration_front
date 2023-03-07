@@ -1,33 +1,41 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
+export class LoginComponent  {
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  constructor(private userService:UserService, private router: Router) { }
 
-  login() {
-    this.userService.login(this.username, this.password).subscribe(
+  constructor(private authService: AuthService, private router: Router) { }
+
+  onSubmit(): void {
+    const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe(
       data => {
-        if (data.nomP == 'admin') {
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.router.navigate(['/user-dashboard']);
+        this.isLoggedIn = true;
+        this.isLoginFailed = false;
+        this.roles = data.roles;
+        if (this.roles.includes('admin')) {
+          this.router.navigate(['dashboard']);
         }
       },
-      error => {
-        this.errorMessage = 'Invalid username or password.';
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
       }
     );
   }
-
-
 }
+

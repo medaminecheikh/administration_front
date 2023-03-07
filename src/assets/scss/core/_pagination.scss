@@ -1,0 +1,95 @@
+.page-item {
+  &.active .page-link {
+    box-shadow: $pagination-active-box-shadow;
+  }
+
+  .page-link,
+  span {
+    display: $page-link-display;
+    align-items: $page-link-align-items;
+    justify-content: $page-link-justify-content;
+    color: $secondary;
+    padding: 0;
+    margin: $page-link-margin;
+    border-radius: $page-link-radius !important;
+    width: $page-link-width;
+    height: $page-link-height;
+    font-size: $font-size-sm;
+  }
+}
+
+.pagination-lg {
+  .page-item {
+    .page-link,
+    span {
+      width: $page-link-width-lg;
+      height: $page-link-height-lg;
+      line-height: $page-link-line-height-lg;
+    }
+  }
+}
+
+.pagination-sm {
+  .page-item {
+    .page-link,
+    span {
+      width: $page-link-width-sm;
+      height: $page-link-height-sm;
+      line-height: $page-link-line-height-sm;
+    }
+  }
+}
+$primary-gradient:            #EC407A !default;
+$primary-gradient-state:      #D81B60 !default;
+
+$secondary-gradient:          #747b8a !default;
+$secondary-gradient-state:    #495361 !default;
+
+$info-gradient:               #49a3f1 !default;
+$info-gradient-state:         #1A73E8 !default;
+
+$success-gradient:            #66BB6A !default;
+$success-gradient-state:      #43A047 !default;
+
+$danger-gradient:             #EF5350 !default;
+$danger-gradient-state:       #E53935 !default;
+
+$warning-gradient:            #FFA726 !default;
+$warning-gradient-state:      #FB8C00 !default;
+
+$dark-gradient:               #42424a !default;
+$dark-gradient-state:         #191919 !default;
+
+$light-gradient:              #EBEFF4 !default;
+$light-gradient-state:        #CED4DA !default;
+
+$dark-gradient-dark:          #323a54 !default;
+$dark-gradient-state-dark:    #1a2035 !default;
+
+// Gradient Colors map
+$theme-gradient-colors: (
+  "primary":    ($primary-gradient, $primary-gradient-state),
+  "secondary":  ($secondary-gradient, $secondary-gradient-state),
+  "success":    ($success-gradient, $success-gradient-state),
+  "info":       ($info-gradient, $info-gradient-state),
+  "warning":    ($warning-gradient, $warning-gradient-state),
+  "danger":     ($danger-gradient, $danger-gradient-state),
+  "light":      ($light-gradient, $light-gradient-state),
+  "dark":       ($dark-gradient, $dark-gradient-state)
+) !default;
+
+// Colors
+.pagination {
+  @each $name, $value in $theme-gradient-colors {
+    &.pagination-#{$name} {
+      .page-item.active > .page-link {
+        &,
+        &:focus,
+        &:hover {
+          @include gradient-directional(nth($value, 1) 0%, nth($value, -1) 100%, $deg: 195deg);
+          border: none;
+        }
+      }
+    }
+  }
+}
