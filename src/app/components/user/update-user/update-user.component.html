@@ -3,21 +3,33 @@
     <div class="row">
 
 
-      <div class="col-md-12 ">
-        <div class="card card-profile shadow">
-          <div class="card-avatar">
-            <a href="javascript:void(0)">
-              <img class="img" src="./assets/img/faces/marc.jpg" />
-            </a>
+      <div class="col-md-12  ">
+        <div class="card ">
+          <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">assignment</i>
+            </div>
+            <div class="row">
+              <h3 class="card-title ">Update Utilisateur</h3>
+              <div class="  col-md-3 ml-auto">
+                <button (click)="saveUser()" class="btn btn-sm btn-round btn-success "> Save <i class="bi bi-pencil-square"></i></button>
+                <button class=" btn btn-sm btn-round btn-rose"> Delete <i class="bi bi-trash"></i></button>
+              </div>
+
+            </div>
+            <p class="  text-gray">Gestion Utilisateur / Update Utilisateur</p>
+
+
+
           </div>
           <div class="card-body">
-            <h6 class="card-category text-gray">Fichier Utilisateur</h6>
+
             <div class="row">
-              <div class="col-md-8">
-                <div class="card card-profile ">
-                  <div class="card-header card-header-primary card-header-icon">
+              <div class="col-md-5">
+                <div class="card  ">
+                  <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
-                      <i class="material-icons">person</i>
+                      <i class="material-icons">badge</i>
                     </div>
                     <h3 class="card-title">
                       <small>Utilisateur</small>
@@ -28,18 +40,18 @@
                     <form>
                       <div class="row">
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                           <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Login">
+                            <input matInput placeholder="Login" disabled>
                           </mat-form-field>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                           <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Password" type="text">
+                            <input matInput placeholder="New Password" type="password">
                           </mat-form-field>
                         </div><div class="col-md-4">
                         <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Nom Profil" type="text">
+                          <input matInput placeholder="Confirm Password" type="password">
                         </mat-form-field>
                       </div>
                       </div>
@@ -63,28 +75,35 @@
                         </div>
                       </div>
                       <div class="row">
+                        <div class="col-md-4">
+                          <mat-form-field>
+                            <mat-label>EST_ACTIF</mat-label>
+                            <mat-select >
+                              <mat-option value="1">Active</mat-option>
+                              <mat-option value="0">Desactive</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
 
                         <div class="col-md-4">
-                          <h6 for="exampleFormControlSelect1">Actif</h6>
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>0</option>
-                            <option selected>1</option>
-                          </select>
+                          <mat-form-field>
+                            <mat-label>F_ADM_LOC</mat-label>
+                            <mat-select >
+                              <mat-option value="1">Active</mat-option>
+                              <mat-option value="0">Desactive</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                          <h6 for="ControlSelect1">F_ADM_LOC</h6>
-                          <select class="form-control" id="ControlSelect1">
-                            <option>0</option>
-                            <option selected>1</option>
-                          </select>
+                          <mat-form-field>
+                            <mat-label>F_ADM_CEN</mat-label>
+                            <mat-select >
+                              <mat-option value="1">Active</mat-option>
+                              <mat-option value="0">Desactive</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                         </div>
-                        <div class="col-md-4">
-                          <h6 for="ControlSelect2">F_ADM_CEN</h6>
-                          <select class="form-control" id="ControlSelect2">
-                            <option>0</option>
-                            <option selected>1</option>
-                          </select>
-                        </div>
+
                       </div>
                       <div class="row">
                         <div class="col-md-12">
@@ -99,13 +118,14 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="card card-profile">
-                  <div class="card-header card-header-warning card-header-icon">
+
+              <div class="col-md-3">
+                <div class="card ">
+                  <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
                       <i class="material-icons">content_copy</i>
                     </div>
-                    <h3 class="card-title">
+                    <h3 class="card-title ">
                       <small>Profil</small>
                     </h3>
                   </div>
@@ -114,15 +134,12 @@
                     <p><strong>Nom Profil:</strong> </p>
                     <p><strong>Description Profil:</strong></p>
                   </div>
-                  <div class="card-footer">
-                    <a href="javascript:void(0)" class="btn btn-warning btn-round">Update</a>
-                    <a href="javascript:void(0)" class="btn btn btn-round">Remove <i><mat-icon>delete</mat-icon></i></a>
-                  </div>
+
                 </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="card card-stats">
+              <div class="col-md-4">
+                <div class="card ">
                   <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
                       <i class="material-icons">store</i>
@@ -130,16 +147,14 @@
                     <p class="card-category"></p>
                     <h3 class="card-title"><small>Espace TT</small></h3>
 
-
                   </div>
                 </div>
               </div>
             </div>
-            <a href="javascript:void(0)" class="btn btn-success btn-round">submit</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
+

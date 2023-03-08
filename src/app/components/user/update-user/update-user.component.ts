@@ -8,4 +8,7 @@ import {Page} from "../../../modules/Page";
 })
 export class UpdateUserComponent  {
 
+  saveUser() {
+
+  }
 }

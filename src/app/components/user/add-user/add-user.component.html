@@ -4,18 +4,28 @@
 
 
       <div class="col-md-12 ">
-        <div class="card card-profile shadow">
-          <div class="card-avatar">
-            <a href="javascript:void(0)">
-              <img class="img" src="./assets/img/faces/marc.jpg" />
-            </a>
+        <div class="card ">
+          <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">assignment</i>
+            </div>
+            <div class="row">
+              <h3 class="card-title ">Create Utilisateur</h3>
+              <div class="  col-md-4 ml-auto">
+                <button class="btn btn-success btn-round">Save Utilisateur</button>
+                <button class=" btn btn-sm btn-round btn-rose"> Cancel <i class="bi bi-x-lg"></i></button>
+              </div>
+
+            </div>
+            <p class="  text-gray">Gestion Utilisateur / Create Utilisateur</p>
+
           </div>
           <div class="card-body">
-            <h6 class="card-category text-gray">Fichier Utilisateur</h6>
+
             <div class="row">
-              <div class="col-md-8">
-                <div class="card card-profile ">
-                  <div class="card-header card-header-primary card-header-icon">
+              <div class="col-md-6">
+                <div class="card  ">
+                  <div class="card-header card-header-gray card-header-icon">
                     <div class="card-icon">
                       <i class="material-icons">person</i>
                     </div>
@@ -107,7 +117,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="card card-profile">
+                <div class="card ">
                   <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
                       <i class="material-icons">content_copy</i>
@@ -122,14 +132,14 @@
                     <p><strong>Description Profil:</strong></p>
                   </div>
                   <div class="card-footer">
-                    <a href="javascript:void(0)" class="btn btn-success btn-round" data-toggle="modal" data-target="#profilModal">ADD  </a>
-                    <a href="javascript:void(0)" class="btn btn btn-round">Remove <i><mat-icon>delete</mat-icon></i></a>
+                    <a  class="btn btn-success btn-round" data-toggle="modal" data-target="#profilModal">ADD  </a>
+                    <a  class="btn btn btn-round">Remove <i><mat-icon>delete</mat-icon></i></a>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="card card-stats">
+              <div class="col-md-4">
+                <div class="card ">
                   <div class="card-header card-header-success card-header-icon">
                     <div class="card-icon">
                       <i class="material-icons">store</i>
@@ -142,7 +152,6 @@
                 </div>
               </div>
             </div>
-            <a class="btn btn-success btn-round">Save Utilisateur</a>
           </div>
         </div>
       </div>
@@ -159,9 +168,13 @@
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="card">
-                  <div class="card-header card-header-warning">
-                    <h4 class="card-title">List Profil</h4>
-                    <p class="card-category">Add to this user a profil</p>
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                      <i class="material-icons">content_copy</i>
+                    </div>
+                    <h3 class="card-title">
+                      <small>Profil</small>
+                    </h3>
                   </div>
                   <div class="card-body table-responsive">
                     <table class="table table-hover">
@@ -174,6 +187,15 @@
                       <tr>
                         <td>Dakota Rice</td>
                         <td>hello</td>
+                        <td>
+                          <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                            <i class="material-icons">check_box</i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Gimm Rice</td>
+                        <td>Rice one</td>
                         <td>
                           <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                             <i class="material-icons">check_box</i>
