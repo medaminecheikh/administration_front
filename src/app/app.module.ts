@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
@@ -28,6 +28,7 @@ import { DetailUserComponent } from './components/user/detail-user/detail-user.c
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import {MatIconModule} from "@angular/material/icon";
+import {AuthInterceptorService} from "./services/auth/auth-interceptor.service";
 
 
 @NgModule({
@@ -64,7 +65,7 @@ import {MatIconModule} from "@angular/material/icon";
         AppRoutingModule,
         MatIconModule
     ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

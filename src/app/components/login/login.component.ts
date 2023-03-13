@@ -16,6 +16,7 @@ export class LoginComponent {
 
 
   constructor(private authService: AuthService, private router: Router) {
+    authService.logout();
   }
 
   onSubmit(): void {
