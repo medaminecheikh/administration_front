@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
@@ -9,7 +7,7 @@ import {AuthService} from "../../services/auth/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
@@ -17,17 +15,18 @@ export class LoginComponent  {
   roles: string[] = [];
 
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   onSubmit(): void {
-    const { username, password } = this.form;
+    const {username, password} = this.form;
 
     this.authService.login(username, password).subscribe(
       data => {
         this.isLoggedIn = true;
         this.isLoginFailed = false;
         this.roles = data.roles;
-        if (this.roles.includes('admin')) {
+        if (this.roles.includes('ADMIN')) {
           this.router.navigate(['dashboard']);
         }
       },
@@ -38,4 +37,3 @@ export class LoginComponent  {
     );
   }
 }
-

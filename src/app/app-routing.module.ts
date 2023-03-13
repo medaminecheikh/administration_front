@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'update-profil/:id',   component: UpdateProfilComponent },
   { path: 'detail-profil/:id',   component: DetailProfilComponent },
   { path: 'login',   component: LoginComponent },
+  { path: '',   component: LoginComponent },
   { path: 'dashboard',   component: DashboardComponent },
 
 ];

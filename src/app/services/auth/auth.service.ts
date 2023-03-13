@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, map, Observable, tap} from "rxjs";
+import {BehaviorSubject, map, Observable, pipe, tap} from "rxjs";
 import {TokenStorageService} from "./token-storage.service";
 import {CurrentUser} from "../../modules/TokenResponse";
 
@@ -9,7 +9,7 @@ import {CurrentUser} from "../../modules/TokenResponse";
   providedIn: 'root'
 })
 export class AuthService {
-  host = "http://localhost:8088/POS/";
+  host = "http://localhost:8088/POS/auth/";
   private currentUserSubject: BehaviorSubject<CurrentUser | null>;
   public currentUser: Observable<CurrentUser | null>;
 
@@ -23,13 +23,15 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>('/api/authenticate', { username, password })
+    console.log("Logging in with username: " + username + " and password: " + password);
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+    return this.http.post<any>(this.host+'authenticate?password='+password+'&username='+username, null, { headers })
       .pipe(map(response => {
         const user = {
-          username: response.username,
-          roles: response.roles,
-          accessToken: response.accessToken,
-          refreshToken: response.refreshToken
+          username: response.username || '',
+          roles: response.roles || [],
+          accessToken: response.accessToken || '',
+          refreshToken: response.refreshToken || ''
         };
         localStorage.setItem('accessToken', response.accessToken);
         localStorage.setItem('refreshToken', response.refreshToken);
