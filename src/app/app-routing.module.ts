@@ -11,10 +11,11 @@ import {AddProfilComponent} from "./components/profil/add-profil/add-profil.comp
 import {UpdateProfilComponent} from "./components/profil/update-profil/update-profil.component";
 import {DetailProfilComponent} from "./components/profil/detail-profil/detail-profil.component";
 import {DetailUserComponent} from "./components/user/detail-user/detail-user.component";
+import {LoginGuard} from "./guards/login.guard";
 
 const routes: Routes = [
   { path: 'list-user',   component: ListUserComponent },
-  { path: 'add-user',   component: AddUserComponent },
+  { path: 'add-user',   component: AddUserComponent ,canActivate:[LoginGuard] },
   { path: 'detail-user/:id',   component: DetailUserComponent },
   { path: 'update-user/:id',   component: UpdateUserComponent },
   { path: 'list-profil',   component: ListProfilComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'detail-profil/:id',   component: DetailProfilComponent },
   { path: 'login',   component: LoginComponent },
   { path: '',   component: LoginComponent },
-  { path: 'dashboard',   component: DashboardComponent },
+  { path: 'dashboard',   component: DashboardComponent,canActivate:[LoginGuard] },
 
 ];
 

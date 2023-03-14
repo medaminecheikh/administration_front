@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, map, Observable, pipe, tap} from "rxjs";
 import {TokenStorageService} from "./token-storage.service";
 import {CurrentUser} from "../../modules/TokenResponse";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<CurrentUser | null>;
   public currentUser: Observable<CurrentUser | null>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router) {
     this.currentUserSubject = new BehaviorSubject<CurrentUser | null>(this.getCurrentUser());
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -44,9 +45,10 @@ export class AuthService {
     this.setCurrentUser(null);
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    this.router.navigate(['/login']);
   }
 
-  refreshToken() {
+  refreshToken(){
     const refreshToken = localStorage.getItem('refreshToken');
     if (refreshToken) {
       return this.http.get<any>(this.host+'refreshtoken', { headers: { 'Authorization': 'Bearer ' + refreshToken } })
@@ -58,6 +60,7 @@ export class AuthService {
             refreshToken: response.refreshToken
           };
           localStorage.setItem('accessToken', response.accessToken);
+          localStorage.setItem('refreshToken', response.refreshToken);
           this.setCurrentUser(user);
           return user;
         }));

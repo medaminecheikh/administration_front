@@ -79,4 +79,13 @@ export class ListUserComponent implements OnInit {
   ChangeSize() {
     this.searchUsers();
   }
+
+  updateUser() {
+    this.router.navigate(['update-user/:id']);
+  }
+
+  detailUser() {
+    this.router.navigate(['detail-user/:id']);
+
+  }
 }

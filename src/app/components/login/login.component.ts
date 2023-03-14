@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent {
   roles: string[] = [];
 
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,private appComponent: AppComponent) {
+    appComponent.showNav = false;
+
     authService.logout();
   }
 
@@ -26,6 +29,8 @@ export class LoginComponent {
       data => {
         this.isLoggedIn = true;
         this.isLoginFailed = false;
+        this.appComponent.showNav = true;
+
         this.roles = data.roles;
         if (this.roles.includes('ADMIN')) {
           this.router.navigate(['dashboard']);

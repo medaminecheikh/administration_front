@@ -25,6 +25,7 @@
       <th>Prénom</th>
       <th>Matricule</th>
       <th>Date Création</th>
+      <th>Gestion Utilisateur</th>
     </tr>
     </thead>
     <tbody>
@@ -35,12 +36,13 @@
       <td>{{ user.nomU }}</td>
       <td>{{ user.prenU }}</td>
       <td>{{ user.matricule }}</td>
-      <td>{{ user.date_CREATION }}</td>
-      <td class="td-actions text-right">
-        <button mat-raised-button type="button" matTooltip="Edit User" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+      <td>{{ user.date_CREATION | date :'MMMM d, y'}}</td>
+      <td >
+        <button mat-raised-button type="button" matTooltip="Edit User" [matTooltipPosition]="'above'" (click)="updateUser()" class="btn btn-primary btn-round btn-sm ">
           <i class="material-icons">edit</i>
         </button>
-        <button mat-raised-button type="button" matTooltip="Detail User" [matTooltipPosition]="'above'" class="btn btn-info btn-link btn-sm btn-just-icon">
+        <strong> | </strong>
+        <button mat-raised-button type="button" matTooltip="Detail User" [matTooltipPosition]="'above'" (click)="detailUser()" class="btn btn-info btn-round btn-sm ">
           <i class="material-icons">info</i>
         </button>
       </td>
@@ -53,8 +55,11 @@
     <button class="page-link" [disabled]="userPage.first" (click)="onPrev()">Previous</button>
     <div class="page-numbers">
       <ng-container *ngFor="let p of pages">
-        <li class="page-item active">
+        <li class="page-item active " *ngIf="p == page">
         <button class="page-link" [disabled]="p == page" (click)="goToPage(p)">{{ p+1 }}</button>
+        </li>
+        <li class="page-item " *ngIf="p!=page">
+          <button class="page-link" [disabled]="p == page" (click)="goToPage(p)">{{ p+1 }}</button>
         </li>
       </ng-container>
     </div>
@@ -70,20 +75,7 @@
       </div>
 
     </ul>
-    <ul class="pagination pagination-primary">
-      <li class="page-item active">
-        <a class="page-link" href="javascript:;">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#link">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#link">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#link">4</a>
 
-    </ul>
   </div>
 
 </div>

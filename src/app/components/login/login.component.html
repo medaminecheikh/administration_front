@@ -1,12 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <h4 class="card-title mt-2">Sign In</h4>
-        </header>
+    <div class="col-md-6 ml-auto mr-auto">
+      <div class="card card-login ">
+        <div class="card-header card-header-rose text-center">
+          <h4 class="card-title">
+          Sign In
+          </h4>
+        </div>
         <article class="card-body">
-          <form (ngSubmit)="onSubmit()">
+          <p class="card-description text-center">  Wellcome back </p>
+          <form  (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label>Username</label>
               <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required>
@@ -15,8 +18,10 @@
               <label>Password</label>
               <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
             </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-block"> Login </button>
+            <div class="form-group ">
+              <div class="card-footer justify-content-center">
+              <button class="btn btn-light btn-block btn-round col-md-6"> Login </button>
+              </div>
             </div>
             <div class="alert alert-danger" *ngIf="isLoginFailed">{{ errorMessage }}</div>
           </form>

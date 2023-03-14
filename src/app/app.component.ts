@@ -9,7 +9,7 @@ import { filter, Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  showNav = true;
   constructor(  private router: Router) {}
 
   ngOnInit() {
